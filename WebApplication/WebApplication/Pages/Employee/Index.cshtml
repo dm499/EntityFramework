@@ -2,65 +2,85 @@
 @model WebApplication.Pages.Employee.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Employee List";
 }
 
-<h1>Index</h1>
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Employee List</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info form-control text-white">Create New Employee</a>
+    </div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Employees[0].FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employees[0].MiddleName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employees[0].LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employees[0].Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employees[0].Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employees[0].GenderType)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Employees) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MiddleName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GenderType.Name)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            @if (Model.Employees.Count() > 0)
+            {
+                <div class="alert alert-success">
+                    available employee...
+                </div>
+
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="Employees.FirstOrDefault().FirstName"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Employees.FirstOrDefault().MiddleName"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Employees.FirstOrDefault().LastName"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Employees.FirstOrDefault().GenderType"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Employees.FirstOrDefault().Phone"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Employees.FirstOrDefault().Email"></label>
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.Employees)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.MiddleName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.GenderType.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Email)
+                            </td>
+                            <td>
+                                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">Edit</a>
+                                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-outline-secondary">Details</a>
+                                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    No employee available...
+                </div>
+            }
+        </form>
+    </div>
+</div>

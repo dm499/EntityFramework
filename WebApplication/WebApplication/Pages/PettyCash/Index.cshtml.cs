@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using WebApplication.Models;
 
-namespace WebApplication.Pages.Employee
+namespace WebApplication.Pages.PettyCash
 {
     public class IndexModel : PageModel
     {
@@ -15,12 +18,14 @@ namespace WebApplication.Pages.Employee
             _context = context;
         }
 
-        public IList<Employees> Employees { get;set; }
+        public IList<PettyCashRequests> PettyCashRequests { get;set; }
 
         public async Task OnGetAsync()
         {
-            Employees = await _context.Employees
-                .Include(e => e.GenderType).ToListAsync();
+            PettyCashRequests = await _context.PettyCashRequests
+                .Include(p => p.CurrencyType)
+                .Include(p => p.Employee)
+                .Include(p => p.StatusType).ToListAsync();
         }
     }
 }

@@ -2,54 +2,40 @@
 @model WebApplication.Pages.Employee.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Employee Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Employees</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employees.FirstName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employees.FirstName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employees.MiddleName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employees.MiddleName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employees.LastName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employees.LastName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employees.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employees.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employees.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employees.Phone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employees.GenderType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employees.GenderType.Description)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Employees.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+    <div class="border container" style="padding:30px;">
+        <div class="alert alert-secondary" role="alert">
+            Employee Details
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Employees.FirstName)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Employees.MiddleName)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Employees.LastName)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Employees.GenderType)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Employees.Phone)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Employees.Email)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(model => model.Employees.FirstName)</td>
+                    <td>@Html.DisplayFor(model => model.Employees.MiddleName)</td>
+                    <td>@Html.DisplayFor(model => model.Employees.LastName)</td>
+                    <td>@Html.DisplayFor(model => model.Employees.GenderType.Name)</td>
+                    <td>@Html.DisplayFor(model => model.Employees.Phone)</td>
+                    <td>@Html.DisplayFor(model => model.Employees.Email)</td>
+                </tr>
+            </tbody>
+        </table>
+        <form method="post">
+            <div class="form-group row mt-5">
+                <div class="col-2">
+                    <a asp-page="./Index" class="btn btn-outline-secondary">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>

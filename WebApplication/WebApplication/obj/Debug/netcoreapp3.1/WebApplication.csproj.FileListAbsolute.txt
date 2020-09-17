@@ -444,3 +444,8 @@ C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplicati
 C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Employee\Details.cshtml.g.cs
 C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Employee\Edit.cshtml.g.cs
 C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Employee\Index.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\PettyCash\Create.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\PettyCash\Delete.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\PettyCash\Details.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\PettyCash\Edit.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\PettyCash\Index.cshtml.g.cs

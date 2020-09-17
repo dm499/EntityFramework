@@ -1,10 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using WebApplication.Models;
 
-namespace WebApplication.Pages.Employee
+namespace WebApplication.Pages.PettyCash
 {
     public class DetailsModel : PageModel
     {
@@ -15,7 +18,7 @@ namespace WebApplication.Pages.Employee
             _context = context;
         }
 
-        public Employees Employees { get; set; }
+        public PettyCashRequests PettyCashRequests { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -24,10 +27,12 @@ namespace WebApplication.Pages.Employee
                 return NotFound();
             }
 
-            Employees = await _context.Employees
-                .Include(e => e.GenderType).FirstOrDefaultAsync(m => m.Id == id);
+            PettyCashRequests = await _context.PettyCashRequests
+                .Include(p => p.CurrencyType)
+                .Include(p => p.Employee)
+                .Include(p => p.StatusType).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Employees == null)
+            if (PettyCashRequests == null)
             {
                 return NotFound();
             }

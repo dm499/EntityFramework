@@ -1,0 +1,66 @@
+﻿@page
+@model WebApplication.Pages.PettyCash.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PettyCashRequests[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PettyCashRequests[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PettyCashRequests[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PettyCashRequests[0].CurrencyType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PettyCashRequests[0].Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PettyCashRequests[0].StatusType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PettyCashRequests) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrencyType.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusType.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

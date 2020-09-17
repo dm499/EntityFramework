@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -6,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication.Models;
 
-namespace WebApplication.Pages.Employee
+namespace WebApplication.Pages.PettyCash
 {
     public class EditModel : PageModel
     {
@@ -18,7 +20,7 @@ namespace WebApplication.Pages.Employee
         }
 
         [BindProperty]
-        public Employees Employees { get; set; }
+        public PettyCashRequests PettyCashRequests { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,17 +29,23 @@ namespace WebApplication.Pages.Employee
                 return NotFound();
             }
 
-            Employees = await _context.Employees
-                .Include(e => e.GenderType).FirstOrDefaultAsync(m => m.Id == id);
+            PettyCashRequests = await _context.PettyCashRequests
+                .Include(p => p.CurrencyType)
+                .Include(p => p.Employee)
+                .Include(p => p.StatusType).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Employees == null)
+            if (PettyCashRequests == null)
             {
                 return NotFound();
             }
-           ViewData["GenderTypeId"] = new SelectList(_context.GenderTypes, "Id", "Name");
+           ViewData["CurrencyTypeId"] = new SelectList(_context.CurrencyTypes, "Id", "Description");
+           ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Email");
+           ViewData["StatusTypeId"] = new SelectList(_context.StatusTypes, "Id", "Description");
             return Page();
         }
 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -45,7 +53,7 @@ namespace WebApplication.Pages.Employee
                 return Page();
             }
 
-            _context.Attach(Employees).State = EntityState.Modified;
+            _context.Attach(PettyCashRequests).State = EntityState.Modified;
 
             try
             {
@@ -53,7 +61,7 @@ namespace WebApplication.Pages.Employee
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeesExists(Employees.Id))
+                if (!PettyCashRequestsExists(PettyCashRequests.Id))
                 {
                     return NotFound();
                 }
@@ -66,9 +74,9 @@ namespace WebApplication.Pages.Employee
             return RedirectToPage("./Index");
         }
 
-        private bool EmployeesExists(int id)
+        private bool PettyCashRequestsExists(int id)
         {
-            return _context.Employees.Any(e => e.Id == id);
+            return _context.PettyCashRequests.Any(e => e.Id == id);
         }
     }
 }

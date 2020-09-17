@@ -1,10 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using WebApplication.Models;
 
-namespace WebApplication.Pages.Employee
+namespace WebApplication.Pages.PettyCash
 {
     public class DeleteModel : PageModel
     {
@@ -16,7 +19,7 @@ namespace WebApplication.Pages.Employee
         }
 
         [BindProperty]
-        public Employees Employees { get; set; }
+        public PettyCashRequests PettyCashRequests { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -25,10 +28,12 @@ namespace WebApplication.Pages.Employee
                 return NotFound();
             }
 
-            Employees = await _context.Employees
-                .Include(e => e.GenderType).FirstOrDefaultAsync(m => m.Id == id);
+            PettyCashRequests = await _context.PettyCashRequests
+                .Include(p => p.CurrencyType)
+                .Include(p => p.Employee)
+                .Include(p => p.StatusType).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Employees == null)
+            if (PettyCashRequests == null)
             {
                 return NotFound();
             }
@@ -42,11 +47,11 @@ namespace WebApplication.Pages.Employee
                 return NotFound();
             }
 
-            Employees = await _context.Employees.FindAsync(id);
+            PettyCashRequests = await _context.PettyCashRequests.FindAsync(id);
 
-            if (Employees != null)
+            if (PettyCashRequests != null)
             {
-                _context.Employees.Remove(Employees);
+                _context.PettyCashRequests.Remove(PettyCashRequests);
                 await _context.SaveChangesAsync();
             }
 

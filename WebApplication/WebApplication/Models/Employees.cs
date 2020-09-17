@@ -20,7 +20,6 @@ namespace WebApplication.Models
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required]
         [StringLength (50)]
         [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
@@ -44,7 +43,6 @@ namespace WebApplication.Models
 
         public int? GenderTypeId { get; set; }
 
-        [Required]
         [Display(Name = "Gender")]
         public virtual GenderTypes GenderType { get; set; }
 
