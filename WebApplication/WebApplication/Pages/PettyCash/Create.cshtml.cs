@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,17 +17,15 @@ namespace WebApplication.Pages.PettyCash
 
         public IActionResult OnGet()
         {
-        ViewData["CurrencyTypeId"] = new SelectList(_context.CurrencyTypes, "Id", "Description");
-        ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Email");
-        ViewData["StatusTypeId"] = new SelectList(_context.StatusTypes, "Id", "Description");
+        ViewData["CurrencyTypeId"] = new SelectList(_context.CurrencyTypes, "Id", "Name");
+        ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "FirstName");
+        ViewData["StatusTypeId"] = new SelectList(_context.StatusTypes, "Id", "Name");
             return Page();
         }
 
         [BindProperty]
         public PettyCashRequests PettyCashRequests { get; set; }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

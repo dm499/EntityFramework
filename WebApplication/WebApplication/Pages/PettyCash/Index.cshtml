@@ -2,65 +2,75 @@
 @model WebApplication.Pages.PettyCash.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Request List";
 }
 
-<h1>Index</h1>
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Petty Cash Request</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info form-control text-white">Create New Request</a>
+    </div>
+</div>
+<div class="col-12 border p-3 mt-3">
+    @if (Model.PettyCashRequests.Count() > 0)
+    {
+        <div class="alert alert-success">
+            Available requests...
+        </div>
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Currency</th>
+                    <th>Employee</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pettyCashRequest in Model.PettyCashRequests)
+                {
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PettyCashRequests[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PettyCashRequests[0].Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PettyCashRequests[0].Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PettyCashRequests[0].CurrencyType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PettyCashRequests[0].Employee)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PettyCashRequests[0].StatusType)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.PettyCashRequests) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurrencyType.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusType.Description)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+                    <tr>
+                        <td>
+                            @pettyCashRequest.Date.ToLongDateString()
+                        </td>
+                        <td>
+                            @pettyCashRequest.Description
+                        </td>
+                        <td>
+                            @pettyCashRequest.Amount.ToString("c")
+                        </td>
+                        <td>
+                            @pettyCashRequest.CurrencyType.Name
+                        </td>
+                        <td>
+                            @pettyCashRequest.Employee.FirstName
+                        </td>
+                        <td>
+                            @pettyCashRequest.StatusType.Name
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@pettyCashRequest.Id" class="btn btn-outline-secondary">Edit</a>
+                            <a asp-page="./Details" asp-route-id="@pettyCashRequest.Id" class="btn btn-outline-success">Details</a>
+                            <a asp-page="./Delete" asp-route-id="@pettyCashRequest.Id" class="btn btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            No petty cash request available...
+        </div>
+    }
+</div>
+

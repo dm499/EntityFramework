@@ -2,53 +2,81 @@
 @model WebApplication.Pages.PettyCash.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Request";
 }
 
-<h1>Create</h1>
+<h2 class="text-info">Create New Request</h2>
+<br />
 
-<h4>PettyCashRequests</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PettyCashRequests.Description" class="control-label"></label>
-                <input asp-for="PettyCashRequests.Description" class="form-control" />
-                <span asp-validation-for="PettyCashRequests.Description" class="text-danger"></span>
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="PettyCashRequests.Date"></label>
             </div>
-            <div class="form-group">
-                <label asp-for="PettyCashRequests.Amount" class="control-label"></label>
-                <input asp-for="PettyCashRequests.Amount" class="form-control" />
-                <span asp-validation-for="PettyCashRequests.Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PettyCashRequests.Date" class="control-label"></label>
+            <div class="col-6">
                 <input asp-for="PettyCashRequests.Date" class="form-control" />
-                <span asp-validation-for="PettyCashRequests.Date" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PettyCashRequests.EmployeeId" class="control-label"></label>
-                <select asp-for="PettyCashRequests.EmployeeId" class ="form-control" asp-items="ViewBag.EmployeeId"></select>
+            <span asp-validation-for="PettyCashRequests.Date" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="PettyCashRequests.Description"></label>
             </div>
-            <div class="form-group">
-                <label asp-for="PettyCashRequests.CurrencyTypeId" class="control-label"></label>
-                <select asp-for="PettyCashRequests.CurrencyTypeId" class ="form-control" asp-items="ViewBag.CurrencyTypeId"></select>
+            <div class="col-6">
+                <input asp-for="PettyCashRequests.Description" class="form-control" />
             </div>
-            <div class="form-group">
-                <label asp-for="PettyCashRequests.StatusTypeId" class="control-label"></label>
-                <select asp-for="PettyCashRequests.StatusTypeId" class ="form-control" asp-items="ViewBag.StatusTypeId"></select>
+            <span asp-validation-for="PettyCashRequests.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="PettyCashRequests.Amount"></label>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="col-6">
+                <input asp-for="PettyCashRequests.Amount" class="form-control" />
             </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
+            <span asp-validation-for="PettyCashRequests.Amount" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="PettyCashRequests.CurrencyType"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="PettyCashRequests.CurrencyTypeId" class="form-control" asp-items="ViewBag.CurrencyTypeId">
+                    <option value="" selected> -- Choose a currency --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="PettyCashRequests.Employee"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="PettyCashRequests.EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId">
+                    <option value="" selected> -- Choose a employee --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="PettyCashRequests.StatusType"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="PettyCashRequests.StatusTypeId" class="form-control" asp-items="ViewBag.StatusTypeId">
+                    <option value="" selected> -- Choose a status --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Create" class="btn btn-outline-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-outline-secondary form-control">Back</a>
+            </div>
+        </div>
+    </form>
 </div>
 
 @section Scripts {

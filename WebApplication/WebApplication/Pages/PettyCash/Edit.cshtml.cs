@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -38,14 +36,12 @@ namespace WebApplication.Pages.PettyCash
             {
                 return NotFound();
             }
-           ViewData["CurrencyTypeId"] = new SelectList(_context.CurrencyTypes, "Id", "Description");
-           ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Email");
-           ViewData["StatusTypeId"] = new SelectList(_context.StatusTypes, "Id", "Description");
+           ViewData["CurrencyTypeId"] = new SelectList(_context.CurrencyTypes, "Id", "Name");
+           ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "FirstName");
+           ViewData["StatusTypeId"] = new SelectList(_context.StatusTypes, "Id", "Name");
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
