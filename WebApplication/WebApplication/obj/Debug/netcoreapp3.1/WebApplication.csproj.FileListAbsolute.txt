@@ -454,3 +454,8 @@ C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplicati
 C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Currency\Details.cshtml.g.cs
 C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Currency\Edit.cshtml.g.cs
 C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Currency\Index.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Gender\Create.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Gender\Delete.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Gender\Details.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Gender\Edit.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Gender\Index.cshtml.g.cs
