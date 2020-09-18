@@ -1,0 +1,33 @@
+﻿@page
+@model WebApplication.Pages.StatusPage.DetailsModel
+
+@{
+    ViewData["Title"] = "Status Details";
+}
+
+    <div class="border container" style="padding:30px;">
+        <div class="alert alert-secondary" role="alert">
+            Status Details...
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(model => model.StatusTypes.Name)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.StatusTypes.Description)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(model => model.StatusTypes.Name)</td>
+                    <td>@Html.DisplayFor(model => model.StatusTypes.Description)</td>
+                </tr>
+            </tbody>
+        </table>
+        <form method="post">
+            <div class="form-group row mt-5">
+                <div class="col-2">
+                    <a asp-page="./Index" class="btn btn-outline-secondary">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>

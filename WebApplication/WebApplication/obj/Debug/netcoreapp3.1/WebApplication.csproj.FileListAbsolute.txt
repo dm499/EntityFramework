@@ -459,3 +459,8 @@ C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplicati
 C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Gender\Details.cshtml.g.cs
 C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Gender\Edit.cshtml.g.cs
 C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\Gender\Index.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\StatusPage\Create.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\StatusPage\Delete.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\StatusPage\Details.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\StatusPage\Edit.cshtml.g.cs
+C:\Users\Max\Desktop\GitHub Projects\EntityFramework\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Pages\StatusPage\Index.cshtml.g.cs
