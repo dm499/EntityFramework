@@ -1,0 +1,63 @@
+﻿@page
+@model WebApplication.Pages.Currency.IndexModel
+
+@{
+    ViewData["Title"] = "Currency";
+}
+
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Currency</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info form-control text-white">Create New Currency</a>
+    </div>
+</div>
+
+<div class="col-12 border p-3 mt-3">
+
+    <form method="post">
+        @if (Model.CurrencyTypes.Count() > 0)
+        {
+            <div class="alert alert-success">
+                Available currency...
+            </div>
+
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        <label asp-for="CurrencyTypes.FirstOrDefault().Name"></label>
+                    </th>
+                    <th>
+                        <label asp-for="CurrencyTypes.FirstOrDefault().Description"></label>
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.CurrencyTypes)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Description)
+                        </td>
+                        <td>
+                            <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">Edit</a>
+                            <a asp-page="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary">Details</a>
+                            <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+                No available currency...
+            </div>
+        }
+    </form>
+</div>
